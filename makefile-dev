@@ -1,9 +1,16 @@
+# Se almacena la ruta relativa donde se ubican los ficheros correspondientes a la infraestructura de desarrollo:
 PATH_INFRA_DEV = infra/dev
+# Se almacenan las rutas absolutas de los directorios donde se ubican los ficheros correspondientes a las credenciales
+# de AWS y GCP así como también el fichero de configuración personalizada de AWS:
 PATH_CREDENTIALS_AWS = /home/japo/.aws
 PATH_CREDENTIALS_GCP = /home/japo/.gcp
-NAME_DOCKER = magnatedelared/acme_iaac_dev:4.0.0
+# Se define el nombre y tag que tendrá la imagen cocinada:
+NAME_DOCKER = magnatedelared/acme_iaac_dev:4.1.0
+# Se asigna el nombre del fichero correspondiente a la definción de la imagen a cocinar:
 NAME_DOCKERFILE = terraform_dev.Dockerfile
+# Se declara el nº de la versión correspondiente a la aplicación Terraform:
 TF_VERSION = 1.1.7
+# Se guarda la url correspondiente al repositorio de Github a clonar y que contendrá la infraestructura a levantar:
 URL_REPO_GITHUB = https://github.com/davidjapo/acme-iaac-aws-gcp-dev--BIS.git
 NOMBRE_REPO_GITHUB = acme-iaac-aws-gcp-dev--BIS
 
@@ -21,7 +28,7 @@ clean:
 # Permite modificar en tiempo de compilación de la imagen, el valor de la variable de entorno donde se ubica el nombre
 # del directorio de la infraestructura de Terraform y que será utilizado por el script bash, además de modificar el valor
 # del argumento que almacena la url del repositorio a clonar:
-dockerize:
+dockerize:	
 	@echo ***BUILD IMAGE WITH CUSTOMIZE GITHUB REPOSITORY PATH STEP***
 	cd docker && \
 	docker build -f $(NAME_DOCKERFILE) -t $(NAME_DOCKER) \
